@@ -1,13 +1,120 @@
 <div class="body-main">
-
-
-  <div class="container">
-    
+  <div class="heading">
+    <div>
+      <h2 class="siteTitle">To do List</h2>
+      <h5 class="siteSubTitle">
+        Hey, Good {{ greeting }}... It's
+        {{ now.toLocaleDateString("en-IN", { weekday: "long" }) }}
+      </h5>
+    </div>
   </div>
 
+  <div class="addItemDiv">
+    <input
+      type="text"
+      class="inputText"
+      name="inputText"
+      placeholder="Add a task"
+      [(ngModel)]="taskInput"
+    />
+
+    <button class="transpButtons" title="Clear Field" (click)='clearField()'> 
+      <i class="fa-solid fa-eraser mt-2 mx-2 transpButtons"></i>
+    </button>
+    <button class="transpButtons transpButtons" title="Add Task" (click)="addTask()">
+      <i class="fa-solid fa-plus"></i>
+    </button>
+  </div>
+
+  <div class="listGroupDiv row">
+
+
+    <div class="ogItemDiv  OGItem">
+      <p class="listTitle">Ongoing</p>
+
+      <!-- <div class="task-block  flex-col"> -->
+      <div class="og-tasks my-4" *ngFor="let item of tasks">
+        
+       
+          <div class="task-row flex itemDiv items-center">
+            <button
+              class="transpButtons"
+              title="Task Finished"
+          
+            ><i class="fa-solid fa-check  text-green-700"></i></button>
+            <div class="itemContent ">
+              <p class="itemTitle">  {{item.data}}     </p>
+              <p class="itemDate">          </p>
+            </div>
+          
+              <!-- <div class="ogButtons"> -->
+                <div class="priority">
+                  <button class="priorityUp transpButtons" title="Increase Priority"
+          
+                  ><i class="fa-solid fa-caret-up text-green-500"></i></button>
+                  <p class="priorityNum" title="Priority"> {{item.priority}} </p>
+                  <button class="priorityDown transpButtons" title="Decrease Priority"
+          
+                  ><i class="fa-solid fa-caret-down text-red-500"></i></button>
+                </div>
+                <div class="editDlteButtonDiv">
+                  <button
+                    class="transpButtons text-secondary" title="Edit Task"
+          
+          
+                  ><i class="fa-regular fa-pen-to-square text-gray-500"></i></button>
+                  <button
+                    class="transpButtons text-red"
+                    title="Delete Task"
+          
+          
+                  ><i class="fa-solid fa-trash  text-red-500"></i></button>
+                </div>
+              <!-- </div> -->
+                  <!-- </div> -->
+        </div>
+        </div>
+    </div>
 
 
 
+    <div class="doneItemDiv itemDiv">
+      <p class="listTitle">Finished</p>
+      <div class="itemContent blurEffect">
+        <p class="itemTitle">             </p>
+        <p class="itemDate">           </p>
+      </div>
+      <button
+        class="bi bi-trash transpButtons text-danger"
+        title="Delete Task"
+       
+      ></button>
+    </div>
+    
+    </div>
+
+   
+     
 
 
-</div>
+    <div class="droppedItemDiv itemDiv">
+      <p class="listTitle">Archived</p>
+      <button
+        class="bi bi-arrow-clockwise transpButtons text-primary"
+        title="Retrieve Task"
+      
+      ></button>
+      <div class="itemContent blurEffect">
+        <p class="itemTitle strike">      </p>
+        <p class="itemDate">         </p>
+      </div>
+      <button
+        class="bi bi-trash transpButtons text-danger"
+        title="Delete Task"
+       
+      ></button>
+    </div>
+     
+    </div>
+
+    
